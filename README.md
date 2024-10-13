@@ -132,6 +132,8 @@ By this setup we can meet:
 - All nodes are data node
 - Each node are master eligible
 - Sharding and replica are set
+- Secure Elasticsearch endpoint with https
+- Secure inter-node communication
 
 
 #### Further consideration for production used.
