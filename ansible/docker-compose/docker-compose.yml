@@ -73,6 +73,7 @@ services:
     ports:
       - ${ES_PORT}:9200
     environment:
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
       - node.name=es01
       - cluster.name=${CLUSTER_NAME}
       - cluster.initial_master_nodes=es01,es02,es03
