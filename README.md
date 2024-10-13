@@ -23,7 +23,7 @@ In this case, I will demonstrate Docker Compose due to time constraints. and I p
 
 We propose using 2 instances:
 
-- Manager "e2-standard-2": 2 CPU, 8 GB Memory, 20 GB storage.
+- Manager "e2-standard-2": 2 CPU, 8 GB Memory, 40 GB storage.
 - Worker "e2-medium 2": 1 CPUs, 4 GB Memory, 20 GB storage.
 
 With a 3-year commitment, we can achieve an average cost of $39.02/month in the us-central1 region. The detailed statistics are available in the Elasticsearch-cluster-cost-projected.csv file.
