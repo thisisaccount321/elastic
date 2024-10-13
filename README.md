@@ -62,6 +62,7 @@ Note: for ease of demonstration:
 - We use your-gcp-credentials-files.json for the service account instead of environment variables.
 - We assign public IPs to both VMs, but in real life, there is no need for public IPs, as we would connect to the private network before accessing Elasticsearch.
 - We write resources directly without using modules or separating the environment folder structure and use Terragrunt to keep the code DRY.
+- Terraform local backend.
 
 #### Deployment and Configuration guide
 
