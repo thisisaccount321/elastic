@@ -2,11 +2,11 @@
 
 region          = "asia-southeast1"
 zone            = "asia-southeast1-a"
-# manager_vm_size = "custom-2-8192"
-# manager_vm_size = "custom-4-16384"
-manager_vm_size = "e2-standard-2"
+# For 1 node docker-compose "e2-standard-4" 40GB Storage cost 48.03$
+manager_vm_size = "e2-standard-4"
 
-# manager_vm_size  = "custom-2-4096"
+# For Swarm
+# manager_vm_size = "e2-standard-2"
 worker_vm_size  = "e2-medium"
 network         = "default"
 subnetwork      = "default"
