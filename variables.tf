@@ -2,7 +2,6 @@
 variable "region" {
   description = "The GCP region where resources will be deployed."
   type        = string
-  default     = "us-central1" # Default region, change as needed
 }
 
 # Define zone variable
@@ -55,10 +54,5 @@ variable "vm_username" {
 # variables.tf
 variable "project_name" {
   description = "The GCP project name"
-  type        = string
-}
-
-variable "region" {
-  description = "The GCP region"
   type        = string
 }

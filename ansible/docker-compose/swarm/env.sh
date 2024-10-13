@@ -6,4 +6,5 @@ export CLUSTER_NAME=es-cluster
 export LICENSE=basic
 export ES_PORT=127.0.0.1:9200
 export KIBANA_PORT=5601
-export MEM_LIMIT=1073741824
+# export MEM_LIMIT=1073741824
+export MEM_LIMIT=2147483648
