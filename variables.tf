@@ -51,3 +51,14 @@ variable "vm_username" {
   type        = string
   default     = "temporary" # Change this to your desired admin username
 }
+
+# variables.tf
+variable "project_name" {
+  description = "The GCP project name"
+  type        = string
+}
+
+variable "region" {
+  description = "The GCP region"
+  type        = string
+}

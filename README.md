@@ -1,5 +1,5 @@
 ### Project Overview
-Total possible time of contributing: 1.5 days.
+Total possible time of time spent: 1.5 days.
 
 One of the strictest requirements is being production-ready while keeping costs under $300 over six months.
 
@@ -65,7 +65,14 @@ Note: for ease of demonstration:
 
 #### Deployment and Configuration guide
 
-Prepare your-gcp-credentials-files.json, then:
+
+
+Prepare your-gcp-credentials-files.json, and export provider env var:
+```
+export TF_VAR_project_name="your-project-name"
+export TF_VAR_region="your-region"
+```
+then:
 ```
 terraform init
 terraform plan
@@ -120,46 +127,12 @@ There are some minor different between Docker-compose and Docker Swarm, so if yo
 In case you are not familiar with Docker Swarm CLI, please ref [Docker stack CLI](https://docs.docker.com/reference/cli/docker/stack/)
 
 #### Resilient Cluster creteria
-
-- Should run at least 3 nodes
+By this setup we can meet:
 - All nodes are data node
 - Each node are master eligible
 - Sharding and replica are set
 
-You can check these criteria by following these steps.
 
-```
-ssh temporary@$MANAGER_PUBLIC_IP -i ./../ssh/id_rsa
-```
-
-```
-curl -k -u "elastic:elastic" "https://localhost:9200/_cluster/health?pretty"
-```
-Example output:
-```
-{
-  "cluster_name" : "es-cluster",
-  "status" : "green",
-  "timed_out" : false,
-  "number_of_nodes" : 3,
-  "number_of_data_nodes" : 3,
-  "active_primary_shards" : 1,
-  "active_shards" : 2,
-  "relocating_shards" : 0,
-  "initializing_shards" : 0,
-  "unassigned_shards" : 0,
-  "delayed_unassigned_shards" : 0,
-  "number_of_pending_tasks" : 0,
-  "number_of_in_flight_fetch" : 0,
-  "task_max_waiting_in_queue_millis" : 0,
-  "active_shards_percent_as_number" : 100.0
-}
-```
-Check node info.
-```
-curl -k -u "elastic:elastic" "https://localhost:9200/_nodes?pretty"
-
-```
 #### Further consideration for production used.
 
 This setup aims for high availability. For a production-ready environment, consider the following practices:
