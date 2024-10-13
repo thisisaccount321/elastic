@@ -59,6 +59,30 @@ resource "google_compute_instance" "manager_vm" {
     sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
+    # Disable swap
+    sudo swapoff -a
+
+    # Update Docker daemon config for ulimits
+    echo '{
+      "default-ulimits": {
+        "nofile": {
+          "hard": 65535,
+          "soft": 65535
+        },
+        "nproc": {
+          "hard": 65535,
+          "soft": 65535
+        },
+        "memlock": {
+          "hard": -1,
+          "soft": -1
+        }
+      }
+    }' | sudo tee /etc/docker/daemon.json
+
+    # Restart Docker service
+    sudo systemctl restart docker
+
   EOT
 
   tags = ["docker-manager"]
@@ -107,6 +131,29 @@ resource "google_compute_instance" "worker_vm" {
     echo "vm.max_map_count=262144" | sudo tee -a /etc/sysctl.conf
     sudo sysctl -p
 
+    # Disable swap
+    sudo swapoff -a
+
+    # Update Docker daemon config for ulimits
+    echo '{
+      "default-ulimits": {
+        "nofile": {
+          "hard": 65535,
+          "soft": 65535
+        },
+        "nproc": {
+          "hard": 65535,
+          "soft": 65535
+        },
+        "memlock": {
+          "hard": -1,
+          "soft": -1
+        }
+      }
+    }' | sudo tee /etc/docker/daemon.json
+
+    # Restart Docker service
+    sudo systemctl restart docker
 
   EOT
 
